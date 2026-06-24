@@ -1,0 +1,41 @@
+import java.util.Scanner;
+
+public class Quesc {
+
+    static int secondLargest(int[] arr) {
+        int first = Integer.MIN_VALUE;
+        int second = Integer.MIN_VALUE;
+
+        for (int i = 0; i < arr.length; i++) {
+            if (arr[i] > first) {
+                second = first;
+                first = arr[i];
+            } 
+            else if (arr[i] > second && arr[i] != first) {
+                second = arr[i];
+            }
+        }
+
+        return second;
+    }
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        int n = sc.nextInt();
+        int[] arr = new int[n];
+
+        for (int i = 0; i < n; i++) {
+            arr[i] = sc.nextInt();
+        }
+
+        int res = secondLargest(arr);
+
+        if (res == Integer.MIN_VALUE)
+            System.out.println("Second largest not found");
+        else
+            System.out.println("Second largest = " + res);
+
+        sc.close();
+    }
+}
